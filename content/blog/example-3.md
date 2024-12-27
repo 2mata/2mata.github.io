@@ -2,6 +2,7 @@
 title: Drone Mata-mata Super Tipis Ini Diklaim Bisa Terbang Selama 1 Tahun Non-Stop
 description: Example description for best pratices seo google or bing
 date: 2024-08-12
+authors: Lord Rangga
 ---
 
 

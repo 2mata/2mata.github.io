@@ -2,6 +2,7 @@
 title: AirPods Pro Generasi Baru Bakal Bisa Deteksi Detak Jantung dan Suhu Tubuh
 description: Example description for best pratices seo google or bing
 date: 2024-08-12
+authors: Lord Rangga
 ---
 
 
