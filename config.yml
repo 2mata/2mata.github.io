@@ -25,6 +25,9 @@ minify:
     html:
       keepQuotes: true
 
+taxonomies:
+  tag: tags
+  author: authors
 
 paginate: 1
 
