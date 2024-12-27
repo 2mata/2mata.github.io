@@ -1,0 +1,15 @@
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="{{ with .OutputFormats.Get "HTML" }}{{ .Permalink }}{{ end }}">
+<meta property="og:title" content="{{ .Title }} - {{ .Site.Title }}">
+<meta property="og:image" content="{{ .Params.thumbnail | default "/default.png" | absURL }}">
+<meta property="og:site_name" content="{{ .Site.Title }}">
+<meta property="og:description" content="{{ if .Params.description  }}{{ .Params.description }}{{else}}Terbaru {{ dateFormat "2006" now }} panduan bagaimana {{.Title}}, - {{.Site.Title}}{{end}}">
+<meta property="og:locale" content="{{ .Site.LanguageCode | default "id"}}">
+
+<!-- Twitter Card data -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="{{ with .Site.Params.contact.twitter }}{{ . }}{{end}}">
+<meta name="twitter:title" content="{{ .Title }} - {{ .Site.Title }}">
+<meta name="twitter:description" content="{{ if .Params.description  }}{{ .Params.description }}{{else}}Terbaru {{ dateFormat "2006" now }} panduan bagaimana {{.Title}}, - {{.Site.Title}}{{end}}">
+<meta name="twitter:image" content="{{ .Params.thumbnail | default "/default.png" | absURL }}">

@@ -1,0 +1,41 @@
+{{- $src := .Params.thumbnail | default "/default.png" | safeURL -}}
+
+{{- $config := imageConfig (printf "/static/%s" $src) -}}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ with .OutputFormats.Get "HTML" }}{{ .Permalink }}{{ end }}"
+  },
+  "headline": "{{ .Title }}",
+  "description": "{{ .Description }}",
+  "image": {
+    "@type": "ImageObject",
+    "url": "{{ $src | absURL }}",
+    "contentUrl": "{{ $src | absURL }}",
+    "height" : {{ $config.Height }},
+    "width" : {{ $config.Width }}
+  },
+  {{ range (.GetTerms "authors") }}
+    "author": {
+      "name" : "{{ .LinkTitle | default .Site.Params.authors }}",
+      "url": "{{.Permalink}}"
+  },
+  {{ end }}
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{.Site.Title}}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://2mata.github.io/logo.png",
+      "width": "600",
+      "height": "60"
+    }
+  },
+  "datePublished" : "{{ .Date.Format "2006-01-02T15:04:05Z" }}",
+  "dateModified" : "{{ .Page.Lastmod.Format "2006-01-02T15:04:05Z"  }}"
+}
+</script>

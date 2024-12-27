@@ -1,0 +1,42 @@
+{{- $src := .Params.thumbnail | default "/default.png" | safeURL -}}
+
+{{- $config := imageConfig (printf "/static/%s" $src) -}}
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  {{ range (.GetTerms "authors") }}
+  "author": {
+    "name" : "{{ .LinkTitle | default .Site.Params.authors }}",
+    "url": "{{.Permalink}}"
+  },
+  {{ end }}
+  "headline": "{{ .Title }}",
+  "description": "{{ if .Params.description  }}{{ .Params.description }}{{else}}Update {{ now.Format "2006"}}, seputar tutorial {{.Title}} - {{.Site.Title}}{{end}}",
+  "wordCount": {{ .WordCount }},
+  "datePublished" : "{{ .Date.Format "2006-01-02T15:04:05Z" }}",
+  "dateModified" : "{{ .Lastmod.Format "2006-01-02T15:04:05Z"  }}",
+  "image" : {
+      "@context": "http://schema.org",
+      "@type": "ImageObject",
+      "url": "{{ $src | absURL }}",
+      "contentUrl": "{{ $src | absURL }}",
+      "datePublished": "{{ .Date.Format "2006-01-02T15:04:05" }}",
+      "name": "{{ .Title | default .Site.Title }}",
+      "height" : {{ $config.Height }},
+      "width" : {{ $config.Width }}
+    },
+  "mainEntityOfPage" : "{{ with .OutputFormats.Get "HTML" }}{{ .Permalink }}{{ end }}",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "{{ $.Site.Title }}",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url": "https://2mata.github.io/logo.png",
+        "width": "600",
+        "height": "60"
+    }
+  }
+}
+</script>

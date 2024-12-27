@@ -1,3 +1,15 @@
+
+{{ define "head" -}}
+
+{{ partial "meta/data" . }}
+{{ partial "meta/open_graph" . }}
+
+{{ partial "meta/schema/Article.json" . }}
+{{ partial "meta/schema/BreadCrumbs.json" . }}
+
+{{ end }}
+
+
 {{ define "main" -}}
 <div class="post">
   <h1>{{ .Title }}</h1>

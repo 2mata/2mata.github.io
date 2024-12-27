@@ -1,5 +1,5 @@
 baseURL: http://example.org/
-languageCode: id-ID
+languageCode: id
 title: 2mata
 copyright: "[2mata.github.io](/)"
 theme: hyde
