@@ -7,13 +7,12 @@
     display: flex;
     padding-left: 1rem;
     list-style: none;
-    border-radius: .25rem
 }
 
 .page-link {
     position: relative;
     display: block;
-    padding: .8rem .75rem;
+    padding: .5rem .75rem;
     margin-left: -1px;
     line-height: 1.25;
     color: #000;
@@ -23,9 +22,9 @@
 
 .page-link:hover {
     z-index: 2;
-    color: #0056b3;
+    color: white;
     text-decoration: none;
-    background-color: yellow;
+    background-color: #4c4edd;
     border-color: #dee2e6
 }
 

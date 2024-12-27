@@ -15,6 +15,7 @@
   {{- end }}
   <meta name="description" content="{{if .IsHome}}{{ $.Site.Params.description }}{{else}}{{.Description}}{{end}}" />
 
+  <link rel="canonical" href="{{.Permalink}}">
 
   {{ $poole := resources.Get "css/poole.css" }}
   

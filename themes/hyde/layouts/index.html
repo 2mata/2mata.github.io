@@ -22,7 +22,7 @@
 {{ define "main" -}}
 <div class="posts">
 {{ $pages := site.RegularPages }}
-{{ $paginator := .Paginate $pages 1 }}
+{{ $paginator := .Paginate $pages 5 }}
 
 {{ range $paginator.Pages }}
 <article class="post">
@@ -30,13 +30,23 @@
     <a href="{{ .Permalink }}">{{ .Title }}</a>
   </h2>
   <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z0700" }}" class="post-date">{{ .Date.Format "Mon, Jan 2, 2006" }}</time>
-  <p>{{ .Summary | truncate 100 }}</p>
+
+  {{ if .Params.description }}
+    <p>{{ .Params.description }}</p>
+  {{ else }}
+    <p>{{ .Summary | truncate 100 }}</p>
+  {{ end}}
+  
 </article>
 {{- end }}
-</div>
 
 <div class="scroll">
 {{ partial "pagination" . }}
 </div>
+
+
+</div>
+
+
 
 {{- end }}

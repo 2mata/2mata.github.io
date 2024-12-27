@@ -8,13 +8,14 @@
 
 .hyperlink {
     text-underline-offset: 8px;
-    text-decoration-color: yellow;
+    text-decoration-color: #4c4edd;
 }
 p, a {
     word-break: break-word;
 }
 
 .scroll {
+    width: 100%;
     white-space: nowrap;
     /* [1] */
     overflow-x: auto;
