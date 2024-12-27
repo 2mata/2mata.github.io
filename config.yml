@@ -26,6 +26,8 @@ minify:
       keepQuotes: true
 
 
+paginate: 1
+
 related:
   includeNewer: false
   indices:

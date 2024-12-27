@@ -311,7 +311,11 @@ tbody tr:nth-child(odd) th {
 .page-title,
 .post-title,
 .post-title a {
-  text-decoration: none!important;
+  color: #202020;
+}
+
+.post-title a:hover {
+  text-decoration: underline;
 }
 
 .page-title,
