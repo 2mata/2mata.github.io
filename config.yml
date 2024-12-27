@@ -1,0 +1,77 @@
+baseURL: http://example.org/
+languageCode: id-ID
+title: 2mata
+copyright: "[2mata.github.io](/)"
+theme: hyde
+
+
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+    parser:
+      attribute:
+        block: true
+      wrapStandAloneImageWithinParagraph: false
+  tableOfContents:
+    endLevel: 3
+    ordered: false
+    startLevel: 2
+  
+
+minify:
+  tdewolff:
+    html:
+      keepQuotes: true
+
+
+related:
+  includeNewer: false
+  indices:
+  - applyFilter: false
+    cardinalityThreshold: 0
+    name: keywords
+    pattern: ""
+    toLower: false
+    type: basic
+    weight: 100
+  - applyFilter: false
+    cardinalityThreshold: 0
+    name: date
+    pattern: ""
+    toLower: false
+    type: basic
+    weight: 10
+  - applyFilter: false
+    cardinalityThreshold: 0
+    name: tags
+    pattern: ""
+    toLower: false
+    type: basic
+    weight: 80
+  threshold: 80
+  toLower: false
+
+
+Menus:
+  main:
+    - Name: "Github"
+      URL: "https://github.com/username/"
+    - Name: "LinkedIn"
+      URL: "https://www.linkedin.com/in/username/"
+    - Name: "Github2"
+      URL: "https://github.com/username/"
+    - Name: "LinkedIn2"
+      URL: "https://www.linkedin.com/in/username/"
+    - Name: "Github3"
+      URL: "https://github.com/username/"
+    - Name: "LinkedIn3"
+      URL: "https://www.linkedin.com/in/username/"
+    - Name: "Github4"
+      URL: "https://github.com/username/"
+    - Name: "LinkedIn4"
+      URL: "https://www.linkedin.com/in/username/"
+
+
+params:

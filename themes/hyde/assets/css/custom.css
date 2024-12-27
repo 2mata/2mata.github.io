@@ -1,0 +1,66 @@
+.hyperlink {
+    color:#202020;
+    text-decoration-style: dashed !important;
+    text-underline-offset: 8px;
+    text-decoration: underline;
+    text-decoration-color: black;
+}
+
+.hyperlink {
+    text-underline-offset: 8px;
+    text-decoration-color: yellow;
+}
+p, a {
+    word-break: break-word;
+}
+
+.scroll {
+    white-space: nowrap;
+    /* [1] */
+    overflow-x: auto;
+    /* [2] */
+    -webkit-overflow-scrolling: touch;
+    /* [3] */
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    /* [4] */;
+}
+/* [5] */
+.scroll::-webkit-scrollbar {
+    display: none;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .sidebar-nav li {
+        display: inline-flex;
+        margin-inline-start: 1rem;
+    }
+}
+
+footer {
+    background-color: #F0F1F2;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer {
+    padding-top: 1rem;
+    padding-bottom: 0.1rem;
+}
+
+@media (min-width: 48em) {
+    .footer {
+        max-width: 38rem;
+        margin-left: 20rem;
+        margin-right: 2rem;
+    }
+}
+
+@media (min-width: 64em) {
+    .footer {
+        margin-left: 22rem;
+        margin-right: 4rem;
+    }
+}

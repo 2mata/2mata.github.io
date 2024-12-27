@@ -1,0 +1,21 @@
+<aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a class="h1" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+      <p class="lead">
+      {{ with .Site.Params.description }} {{.}} {{end}}
+      </p>
+    </div>
+
+    <nav class="scroll">
+      <ul class="sidebar-nav">
+        <li><a href="{{ .Site.BaseURL }}">Home</a> </li>
+        {{ range .Site.Menus.main -}}
+          <li><a href="{{.URL}}"> {{ .Name }} </a></li>
+        {{- end }}
+      </ul>
+    </nav>
+
+    
+  </div>
+</aside>

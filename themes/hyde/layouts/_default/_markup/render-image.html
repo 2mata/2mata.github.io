@@ -1,0 +1,23 @@
+{{- $src := .Destination | safeURL -}}
+
+
+{{- if strings.HasPrefix .Destination "http" -}}
+
+{{ $caption := .Text | lower }}
+{{ $replacere := replaceRE "[^a-zA-Z\\s]" "" $caption }}
+{{ $trim := trim $replacere " " }}
+{{ $split := split $trim "  " | first 3 }}
+{{ $alt := delimit $split " " }}
+
+<img class="img-fluid d-block mx-auto rounded mb-5 mt-5" src="{{ .Destination | safeURL }}" alt="{{ $alt }}" loading="lazy" />
+{{- else -}}
+{{- $config := imageConfig (printf "/static/%s" $src) -}}
+
+{{ $caption := .Text | lower }}
+{{ $replacere := replaceRE "[^a-zA-Z\\s]" "" $caption }}
+{{ $trim := trim $replacere " " }}
+{{ $split := split $trim "  " | first 3 }}
+{{ $alt := delimit $split " " }}
+
+<img class="img-fluid d-block mx-auto rounded mb-5 mt-5" src="{{ .Destination | safeURL }}" alt="{{ $alt }}" loading="lazy" height="{{$config.Height}}" width="{{$config.Width}}" />
+{{- end -}}
