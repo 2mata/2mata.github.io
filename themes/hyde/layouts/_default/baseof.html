@@ -4,19 +4,19 @@
   {{ hugo.Generator }}
 
 
-
-  {{ $poole := resources.Get "css/poole.css" }}
-  
-  {{ $poole := $poole | resources.Minify | resources.Fingerprint }} 
-
+  <!-- poole css - source -->
+  {{ $poole := resources.Get "css/poole.css" }}  
+  {{ $poole := $poole | resources.Minify | resources.Fingerprint }}
   <link rel="stylesheet" href="{{ $poole.RelPermalink }}">
 
 
+  <!-- hyde css - source -->
   {{ $css := resources.Get "css/hyde.css" }}
-
   {{ $css := $css | resources.Minify | resources.Fingerprint }} 
-
   <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+
+
+  
 
 
   <!-- CSS -->
@@ -38,9 +38,10 @@
 
   {{ block "head" . -}}{{- end }}
 
+
+  <!-- custom css - inline -->
+
   {{ $custom := resources.Get "css/custom.css" }}
-
-
   {{ $inline := slice $custom  | resources.Concat "bundles.css" | fingerprint }}
 
   <style type="text/css">

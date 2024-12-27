@@ -1,0 +1,73 @@
+
+details{
+  font-size: .9rem;
+  max-width: 500px;
+  background-color: #fff;
+  border: 2px solid black;
+  
+  summary{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 500;
+    margin-bottom: 0;
+    transition: margin-bottom .4s;
+    position: relative;    
+    padding: 0.6rem;
+
+  }
+  
+  summary::-webkit-details-marker,
+  summary::marker{
+    display: none;
+  }
+  
+
+  summary::after{
+        content: "+";
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1;
+        margin-right: 2rem;
+        margin-top: .8rem;
+        cursor: pointer;
+        background-color: #4c4edd;
+        padding: .7rem;
+        display: grid;
+        place-content: center;
+        aspect-ratio: 1;
+        line-height: 0;
+        position: absolute;
+        top: -.5rem;
+        right: -1.5rem;
+        border-radius: 50%;
+  }
+  
+  *:not(summary) {
+    animation-name: fade;
+    animation-duration: .4s;
+  }
+}
+
+details[open]{
+  
+  summary{
+    margin-bottom: .8rem;
+    background-color: #202020;
+    color: white;
+    
+    &::after{
+      content: "−";
+    }
+  }
+}
+
+@keyframes fade {
+  0%{
+    opacity: 0;
+  }
+  
+  100%{
+    opacity: 1;
+  }
+}

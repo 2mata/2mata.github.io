@@ -1,0 +1,30 @@
+
+
+{{ if .Get "danger" }}
+
+<div class="card card-bg-danger mb-3">
+	<div class="card-body">
+		<div class="card-title bold">🍅 {{ .Get "danger" | upper }}</div>
+    	{{ .Inner | markdownify }}
+	</div>
+</div>
+
+{{ else if  .Get "warning" }}
+
+<div class="card card-bg-warning mb-3">
+	<div class="card-body">
+		<div class="card-title bold">🥭 {{ .Get "warning" | upper }}</div>
+    	{{ .Inner | markdownify }}
+	</div>
+</div>
+
+{{ else if .Get "success" }}
+
+<div class="card card-bg-success mb-3">
+	<div class="card-body">
+		<div class="card-title bold">🥦 {{ .Get "success" | upper }}</div>
+    	{{ .Inner | markdownify }}
+	</div>
+</div>
+
+{{ end }}

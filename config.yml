@@ -5,6 +5,9 @@ copyright: "[2mata.github.io](/)"
 theme: hyde
 
 
+enableEmoji: true
+paginate: 1
+
 
 markup:
   goldmark:
@@ -29,34 +32,19 @@ taxonomies:
   tag: tags
   author: authors
 
-paginate: 1
+
 
 related:
-  includeNewer: false
-  indices:
-  - applyFilter: false
-    cardinalityThreshold: 0
-    name: keywords
-    pattern: ""
-    toLower: false
-    type: basic
-    weight: 100
-  - applyFilter: false
-    cardinalityThreshold: 0
-    name: date
-    pattern: ""
-    toLower: false
-    type: basic
-    weight: 10
-  - applyFilter: false
-    cardinalityThreshold: 0
-    name: tags
-    pattern: ""
-    toLower: false
-    type: basic
-    weight: 80
   threshold: 80
-  toLower: false
+  includeNewer: true
+  toLower: true
+  indices:
+  - name: title
+    weight: 100
+  - name: keywords
+    weight: 100
+  - name: date
+    weight: 100
 
 
 Menus:

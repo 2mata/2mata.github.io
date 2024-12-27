@@ -9,7 +9,7 @@
 {{ $split := split $trim "  " | first 3 }}
 {{ $alt := delimit $split " " }}
 
-<img class="img-fluid d-block mx-auto rounded mb-5 mt-5" src="{{ .Destination | safeURL }}" alt="{{ $alt }}" loading="lazy" />
+<img class="img-fluid mb-5 mt-5" src="{{ .Destination | safeURL }}" alt="{{ $alt }}" loading="lazy" />
 {{- else -}}
 {{- $config := imageConfig (printf "/static/%s" $src) -}}
 
@@ -19,5 +19,5 @@
 {{ $split := split $trim "  " | first 3 }}
 {{ $alt := delimit $split " " }}
 
-<img class="img-fluid d-block mx-auto rounded mb-5 mt-5" src="{{ .Destination | safeURL }}" alt="{{ $alt }}" loading="lazy" height="{{$config.Height}}" width="{{$config.Width}}" />
+<img class="img-fluid mb-5 mt-5" src="{{ .Destination | safeURL }}" alt="{{ $alt }}" loading="lazy" height="{{$config.Height}}" width="{{$config.Width}}" />
 {{- end -}}
