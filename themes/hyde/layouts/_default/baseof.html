@@ -5,29 +5,11 @@
 
 
   {{- partial "meta/data" . -}}
-  {{ partial "meta/open_graph" . -}}
+  {{- partial "meta/open_graph" . -}}
+
+  {{- partial "head_css" . -}}
 
 
-  <!-- poole css - source -->
-  {{ $poole := resources.Get "css/poole.css" }}  
-  {{ $poole := $poole | resources.Minify | resources.Fingerprint }}
-  <link rel="stylesheet" href="{{ $poole.RelPermalink }}">
-
-
-  <!-- hyde css - source -->
-  {{ $css := resources.Get "css/hyde.css" }}
-  {{ $css := $css | resources.Minify | resources.Fingerprint }} 
-  <link rel="stylesheet" href="{{ $css.RelPermalink }}">
-
-
-  <!-- CSS -->
-  <link type="text/css" rel="stylesheet" href="{{ .Site.BaseURL }}css/print.css" media="print">
-  <link type="text/css" rel="stylesheet" href="{{ .Site.BaseURL }}css/syntax.css">
-
-  {{ partial "head_fonts.html" . }}
-
-
-  
 
   {{ partial "hook_head_end.html" . }}
 

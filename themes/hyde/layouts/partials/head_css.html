@@ -1,0 +1,22 @@
+<!-- poole css - source -->
+{{ $poole := resources.Get "css/poole.css" -}}  
+{{- $poole := $poole | resources.Minify | resources.Fingerprint -}}
+<link rel="stylesheet" href="{{ $poole.RelPermalink }}">
+
+<!-- hyde css - source -->
+{{- $css := resources.Get "css/hyde.css" -}}
+{{- $css := $css | resources.Minify | resources.Fingerprint -}} 
+<link rel="stylesheet" href="{{ $css.RelPermalink }}">
+
+<!-- print css - source -->
+{{- $print := resources.Get "css/print.css" -}}
+{{- $print := $print | resources.Minify | resources.Fingerprint -}} 
+<link rel="stylesheet" href="{{ $print.RelPermalink }}" media="print">
+
+<!-- syntax css - source -->
+{{- $syntax := resources.Get "css/syntax.css" -}}
+{{- $syntax := $syntax | resources.Minify | resources.Fingerprint -}} 
+<link rel="stylesheet" href="{{ $syntax.RelPermalink }}">
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
