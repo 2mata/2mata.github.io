@@ -4,6 +4,13 @@
     --sl-shadow-lg: 0px 25px 7px rgba(0, 0, 0, .01), 0px 16px 6px hsla(0, 0%, 0%, .03), 0px 9px 5px hsla(223, 13%, 10%, .08), 0px 4px 4px hsla(0, 0%, 0%, .16), 0px 4px 2px hsla(0, 0%, 0%, .04);
 }
 
+
+
+body {
+    font-family: "Outfit", serif;
+}
+
+
 .img-fluid {
     max-width: 100%;
     height: auto

@@ -18,8 +18,9 @@
 
   <!-- custom css - inline -->
 
+  {{ $fonts := resources.Get "css/fonts.css" }}
   {{ $custom := resources.Get "css/custom.css" }}
-  {{ $inline := slice $custom  | resources.Concat "bundles.css" | fingerprint }}
+  {{ $inline := slice $fonts $custom | resources.Concat "stylez.css" | fingerprint }}
 
   <style type="text/css">
 
