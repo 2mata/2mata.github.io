@@ -4,6 +4,10 @@
   {{ hugo.Generator }}
 
 
+  {{- partial "meta/data" . -}}
+  {{ partial "meta/open_graph" . -}}
+
+
   <!-- poole css - source -->
   {{ $poole := resources.Get "css/poole.css" }}  
   {{ $poole := $poole | resources.Minify | resources.Fingerprint }}
@@ -16,23 +20,14 @@
   <link rel="stylesheet" href="{{ $css.RelPermalink }}">
 
 
-  
-
-
   <!-- CSS -->
   <link type="text/css" rel="stylesheet" href="{{ .Site.BaseURL }}css/print.css" media="print">
   <link type="text/css" rel="stylesheet" href="{{ .Site.BaseURL }}css/syntax.css">
 
   {{ partial "head_fonts.html" . }}
 
-  <!-- Icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="/favicon.png">
 
-  <!-- RSS etc -->
-  {{ range .AlternativeOutputFormats -}}
-    {{ printf `<link href="%s" rel="%s" type="%s" title="%s" />` .Permalink .Rel .MediaType.Type $.Site.Title | safeHTML }}
-  {{ end -}}
+  
 
   {{ partial "hook_head_end.html" . }}
 
