@@ -3,6 +3,7 @@ title: Component Shortcodes
 description: Halaman contoh untuk component website 2mata terbaru
 date: 2024-08-12
 authors: Lord Rangga
+draft: true
 ---
 
 ## Callout

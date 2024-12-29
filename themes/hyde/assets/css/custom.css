@@ -35,7 +35,7 @@ body {
 
 .hyperlink {
     text-underline-offset: 8px;
-    text-decoration-color: #4c4edd;
+    text-decoration-color: #FF5722;
 }
 p, a {
     word-break: break-word;
@@ -63,23 +63,37 @@ p, a {
     box-shadow: var(--sl-shadow-sm);
 }
 .next:hover, .prev:hover {
-    border: 1px solid #4c4edd;
+    border: 0.125rem solid #FF5722;
 }
 
-.prev, .prev>.card-body{
-    padding: .3rem;
+.prev .card-body{
+    padding: .5rem;
 }
-
-.next, .next>.card-body{
+.next .card-body{
     text-align: right;
-    padding: .3rem;
+    padding: .5rem;
 }
+
+.prev .card-title, .next .card-title {
+    margin-bottom: .1rem!important;
+}
+
+
+.h-100 {
+    height: 100% !important;
+    margin-bottom: .5rem;
+
+}
+.d-inline-block {
+    display: inline-block !important;
+}
+
 
 .related a {
     color: black;
 }
 .related hr {
-    border: 2px solid #4c4edd;
+    border: 2px solid #FF5722;
 }
 
 

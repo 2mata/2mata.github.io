@@ -6,9 +6,9 @@
 {
   "@context": "http://schema.org",
   "@type": "Article",
-  {{ range (.GetTerms "authors") }}
+  {{ range (.GetTerms "author") }}
   "author": {
-    "name" : "{{ .LinkTitle | default .Site.Params.authors }}",
+    "name" : "{{ .LinkTitle | default .Site.Params.author }}",
     "url": "{{.Permalink}}"
   },
   {{ end }}

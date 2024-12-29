@@ -4,22 +4,22 @@
 
 <div class="row">
 {{ with $pages.Prev . }}
-<div class="col-6">
-<div class="card prev">
+<div class="col-6 mb-3">
+<div class="card prev h-100">
   <div class="card-body">
     <div class="card-title bold">Previous</div>
-    <a class="stretched-link" href="{{ .RelPermalink }}">{{.Title | truncate 35 }}</a>
+    <a class="stretched-link" href="{{ .RelPermalink }}">{{.Title }}</a>
   </div>
 </div>
 </div>
 {{ end }}
 
 {{ with $pages.Next . }}
-<div class="col-6">
-<div class="card next">
+<div class="col-6 mb-3">
+<div class="card next h-100">
   <div class="card-body">
     <div class="card-title bold">Next</div>
-    <a class="stretched-link" href="{{ .RelPermalink }}">{{.Title | truncate 35 }}</a>
+    <a class="stretched-link" href="{{ .RelPermalink }}">{{.Title }}</a>
   </div>
 </div>
 </div>

@@ -1,12 +1,44 @@
+
+
+
+{{ define "head" -}}
+
+
+
+
+{{ $pagination := resources.Get "css/pagination.css" }}
+  
+{{ $pagination := $pagination | resources.Minify | resources.Fingerprint }} 
+
+<link rel="stylesheet" href="{{ $pagination.RelPermalink }}">
+
+
+{{ end }}
+
+
+
+
+
+
+
 {{ define "main" -}}
-<ul class="posts">
-{{ range .Data.Pages -}}
-  <li>
-    <span>
-      <a href="{{ .Permalink }}">{{ .Title }}</a> 
-      <time class="pull-right post-list" datetime="{{ .Date.Format "2006-01-02T15:04:05Z0700" }}">{{ .Date.Format "Mon, Jan 2, 2006" }}</time>
-    </span>
-  </li>
+<div class="posts">
+
+
+{{ $pages := site.RegularPages }}
+{{ $paginator := .Paginate $pages 5 }}
+
+{{ range $paginator.Pages }}
+  {{ .Render "li" }}
 {{- end }}
-</ul>
+
+<div class="scroll">
+{{ partial "pagination" . }}
+</div>
+
+
+</div>
+
+
+
 {{- end }}

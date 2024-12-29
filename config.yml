@@ -30,7 +30,7 @@ minify:
 
 taxonomies:
   tag: tags
-  author: authors
+  author: author
 
 
 
@@ -49,22 +49,15 @@ related:
 
 Menus:
   main:
-    - Name: "Github"
-      URL: "https://github.com/username/"
-    - Name: "LinkedIn"
-      URL: "https://www.linkedin.com/in/username/"
-    - Name: "Github2"
-      URL: "https://github.com/username/"
-    - Name: "LinkedIn2"
-      URL: "https://www.linkedin.com/in/username/"
-    - Name: "Github3"
-      URL: "https://github.com/username/"
-    - Name: "LinkedIn3"
-      URL: "https://www.linkedin.com/in/username/"
-    - Name: "Github4"
-      URL: "https://github.com/username/"
-    - Name: "LinkedIn4"
-      URL: "https://www.linkedin.com/in/username/"
-
+    - Name: "Tentang Kami"
+      URL: "/about/"
+    - Name: "Disclaimer"
+      URL: "/disclaimer/"
+    - Name: "Privacy Police"
+      URL: "/privacy-policy/"
+    - Name: "Jasa Sadap iPhone"
+      URL: "/blog/aplikasi-penyadap-hp/"
+    - Name: "Jasa Sadap Android"
+      URL: "/blog/aplikasi-sadap-hp/"
 
 params:
