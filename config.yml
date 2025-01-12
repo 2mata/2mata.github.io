@@ -59,5 +59,7 @@ Menus:
       URL: "/blog/aplikasi-penyadap-hp/"
     - Name: "Jasa Sadap Android"
       URL: "/blog/aplikasi-sadap-hp/"
+    - Name: "Sitemap"
+      URL: "/sitemap-html/"
 
 params:

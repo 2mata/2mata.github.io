@@ -1,0 +1,18 @@
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Permalink</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{ range .Site.RegularPages }}
+        <tr>
+            <td><a href="{{.Permalink}}">{{ .Title }}</a> </td>
+            <td>{{ .RelPermalink }}</td>
+        </tr>
+        {{ end }}
+    </tbody>
+</table>
