@@ -23,6 +23,23 @@ Di era digital ini, tanggung jawab terhadap anak-anak dan keluarga semakin besar
 
 Remaja pada usia ini cenderung merasa cukup dewasa untuk membuat keputusan sendiri dan sering mengabaikan nasihat. Namun, pola pikir tersebut dapat menempatkan mereka dalam risiko besar tanpa disadari. Orang tua perlu memiliki solusi efektif untuk melindungi mereka tanpa merusak kepercayaan.
 
+{{< callout success="hubungi kami" >}}
+
+📢 **JASA PEMASANGAN APLIKASI SADAP PROFESIONAL** 📱✨  
+🔒 **Pantau aktivitas digital dengan mudah dan aman!** Kami siap membantu Anda memasang aplikasi **sadap** untuk berbagai kebutuhan pengawasan.
+
+💡 **Keunggulan layanan kami:**  
+✅ Proses cepat & aman  
+✅ Panduan lengkap untuk pemakaian  
+✅ Dukungan penuh jika ada kendala
+
+📞📲 **Hubungi kami sekarang juga!**  
+🟢💬 **WhatsApp:** [+62 8581-3232-228](https://wa.me/6285813232228?text=2mata.github.io)
+
+⚠️ **Catatan:** Gunakan layanan ini dengan penuh tanggung jawab dan sesuai dengan hukum yang berlaku.
+
+{{< /callout >}}
+
 ## Aplikasi Sadap Sosial Media
 
 ![Cara melihat data hp](/2021/09/09/penyadap-pesan-imessage.png)
