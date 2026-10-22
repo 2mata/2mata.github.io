@@ -1,0 +1,24 @@
+{{- /* Shortcode FAQ — satu pasang tanya-jawab.
+       Pemakaian di artikel:
+         ## Pertanyaan yang Sering Diajukan
+         {{< faq q="Apakah aplikasi sadap legal?" >}}
+         Jawaban dalam markdown.
+         {{< /faq >}}
+
+       Setiap pemakaian didaftarkan ke .Page.Scratch ("faqItems"), lalu
+       partials/meta/schema/FAQ.html mengubahnya jadi schema FAQPage.
+       Jawaban sengaja dirender tanpa heading agar tidak memenuhi daftar isi;
+       teks pertanyaan tetap terbaca mesin lewat <summary> + schema. */ -}}
+{{- $q := or (.Get "q") (.Get 0) -}}
+{{- if $q -}}
+  {{- $answer := .Inner | markdownify -}}
+  {{- $items := .Page.Scratch.Get "faqItems" -}}
+  {{- if not $items -}}
+    {{- $items = slice -}}
+  {{- end -}}
+  {{- .Page.Scratch.Set "faqItems" ($items | append (dict "q" ($q | plainify) "a" ($answer | plainify))) -}}
+<details class="mb-3">
+  <summary>{{ $q }}</summary>
+  <div>{{ $answer }}</div>
+</details>
+{{- end -}}

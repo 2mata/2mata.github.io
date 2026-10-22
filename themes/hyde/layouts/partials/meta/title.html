@@ -1,0 +1,11 @@
+{{- /* Judul halaman — sumber tunggal untuk <title>, og:title, dan twitter:title
+       agar formatnya konsisten (sebelumnya og:title menambah " - Situs" sendiri).
+       Halaman paginasi (page 2 ke atas) diberi sufiks unik agar tidak duplikat.
+       Paginator di-set di baseof.html, jadi aman dibaca dari sini. */ -}}
+{{- $title := .Title -}}
+{{- with .Scratch.Get "paginator" -}}
+  {{- if gt .PageNumber 1 -}}
+    {{- $title = printf "%s - Halaman %d" $title .PageNumber -}}
+  {{- end -}}
+{{- end -}}
+{{- return $title -}}

@@ -1,3 +1,25 @@
 User-agent: *
 Allow: /
+
+# Bot AI/LLM diizinkan eksplisit.
+# Grup di bawah ini menimpa grup "*", jadi masing-masing perlu Allow: / sendiri.
+# Tujuannya: konten tetap bisa dikutip di jawaban AI (AI Overviews, ChatGPT, Perplexity).
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 Sitemap: https://2mata.github.io/sitemap.xml

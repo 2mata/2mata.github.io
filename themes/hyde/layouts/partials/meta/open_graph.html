@@ -2,15 +2,15 @@
 {{/* og:type mengikuti jenis halaman: artikel untuk post, website untuk home/list */}}
 <meta property="og:type" content="{{ if eq .Kind "page" }}article{{ else }}website{{ end }}">
 <meta property="og:url" content="{{ with .OutputFormats.Get "HTML" }}{{ .Permalink }}{{ end }}">
-<meta property="og:title" content="{{ .Title }} - {{ .Site.Title }}">
+<meta property="og:title" content="{{ partial "meta/title.html" . }}">
 <meta property="og:image" content="{{ .Params.thumbnail | default "/default.png" | absURL }}">
 <meta property="og:site_name" content="{{ .Site.Title }}">
-<meta property="og:description" content="{{ if .Params.description  }}{{ .Params.description }}{{else}}Terbaru {{ dateFormat "2006" now }} panduan bagaimana {{.Title}}, - {{.Site.Title}}{{end}}">
+<meta property="og:description" content="{{ partial "meta/description.html" . }}">
 <meta property="og:locale" content="{{ or .Site.Language.Locale "id" }}">
 
 <!-- Twitter Card data -->
 <meta name="twitter:card" content="summary_large_image">
 {{ with .Site.Params.contact.twitter }}<meta name="twitter:site" content="{{ . }}">
-{{ end }}<meta name="twitter:title" content="{{ .Title }} - {{ .Site.Title }}">
-<meta name="twitter:description" content="{{ if .Params.description  }}{{ .Params.description }}{{else}}Terbaru {{ dateFormat "2006" now }} panduan bagaimana {{.Title}}, - {{.Site.Title}}{{end}}">
+{{ end }}<meta name="twitter:title" content="{{ partial "meta/title.html" . }}">
+<meta name="twitter:description" content="{{ partial "meta/description.html" . }}">
 <meta name="twitter:image" content="{{ .Params.thumbnail | default "/default.png" | absURL }}">

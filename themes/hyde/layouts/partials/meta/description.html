@@ -1,0 +1,33 @@
+{{- /* Deskripsi meta — sumber tunggal untuk <meta name="description">,
+       og:description, dan twitter:description.
+
+       Urutan prioritas:
+       1. .Params.description  (artikel, halaman, _index.md)
+       2. halaman term         (/tags/x/, /author/x/) -> kalimat yang menyebut term
+       3. halaman taksonomi    (/tags/, /author/)    -> kalimat daftar
+       4. sisanya              -> kalimat umum
+
+       Halaman paginasi (>= 2) diberi sufiks unik supaya tidak duplikat
+       dengan deskripsi halaman pertama. */ -}}
+{{- $desc := .Params.description | default "" -}}
+{{- if not $desc -}}
+  {{- if eq .Kind "term" -}}
+    {{- if eq .Data.Singular "author" -}}
+      {{- $desc = printf "Kumpulan artikel oleh %s di %s: ulasan dan panduan seputar pengawasan digital serta parental control." .Title site.Title -}}
+    {{- else -}}
+      {{- $desc = printf "Kumpulan artikel bertema %s di %s: panduan, ulasan, dan tips praktis untuk orang tua." .Title site.Title -}}
+    {{- end -}}
+  {{- else if eq .Kind "taxonomy" -}}
+    {{- $desc = printf "Daftar semua %s yang dibahas di %s." .Title site.Title -}}
+  {{- else if eq .Kind "section" -}}
+    {{- $desc = printf "Kumpulan artikel %s: panduan, ulasan, dan tips praktis seputar aplikasi pengawasan digital serta parental control." site.Title -}}
+  {{- else -}}
+    {{- $desc = printf "Panduan dan ulasan %s - %s." .Title site.Title -}}
+  {{- end -}}
+{{- end -}}
+{{- with .Scratch.Get "paginator" -}}
+  {{- if gt .PageNumber 1 -}}
+    {{- $desc = printf "%s - Halaman %d." (strings.TrimSuffix "." $desc) .PageNumber -}}
+  {{- end -}}
+{{- end -}}
+{{- return $desc -}}

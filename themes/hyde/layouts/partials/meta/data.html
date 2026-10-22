@@ -4,14 +4,10 @@
 {{ end }}
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-{{/* Judul unik per halaman paginasi ("/page/N/") agar tidak duplikat di mata mesin pencari.
-     Paginator di-set sekali di baseof.html, jadi aman dibaca dari sini. */}}
-{{- $pageTitle := .Title -}}
-{{- with .Scratch.Get "paginator" -}}
-  {{- if gt .PageNumber 1 -}}{{- $pageTitle = printf "%s - Halaman %d" $pageTitle .PageNumber -}}{{- end -}}
-{{- end -}}
-<title>{{ $pageTitle }}</title>
-<meta name="description" content="{{ if .Params.description  }}{{ .Params.description }}{{else}}Terbaru {{ dateFormat "2006" now }} panduan bagaimana {{.Title}}, - {{.Site.Title}}{{end}}">
+{{/* Judul & deskripsi diambil dari partial terpusat supaya formatnya sama
+     dengan og:title/og:description (lihat meta/title.html & meta/description.html). */}}
+<title>{{ partial "meta/title.html" . }}</title>
+<meta name="description" content="{{ partial "meta/description.html" . }}">
 
 <!-- Favicon -->
 <link rel="apple-touch-icon" sizes="152x152" href="{{ "apple-touch-icon.png" | absURL }}">

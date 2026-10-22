@@ -1,0 +1,22 @@
+{{- /* Schema FAQPage untuk GEO (Generative Engine Optimization): blok tanya-jawab
+       adalah potongan yang paling sering dikutip asisten AI / AI Overviews.
+
+       Data berasal dari .Scratch halaman yang diisi shortcode {{< faq >}}.
+       Partial ini WAJIB dipanggil setelah {{ .Content }} di single.html —
+       urutan render menentukan apakah Scratch sudah terisi.
+       Kalau halaman tidak punya shortcode faq, tidak ada apa pun yang dicetak. */ -}}
+{{- $items := .Scratch.Get "faqItems" -}}
+{{- with $items -}}
+  {{- $entities := slice -}}
+  {{- range . -}}
+    {{- $entities = $entities | append (dict
+        "@type" "Question"
+        "name" .q
+        "acceptedAnswer" (dict "@type" "Answer" "text" .a)) -}}
+  {{- end -}}
+  {{- $schema := dict
+      "@context" "https://schema.org"
+      "@type" "FAQPage"
+      "mainEntity" $entities -}}
+<script type="application/ld+json">{{ $schema | jsonify | safeJS }}</script>
+{{- end -}}

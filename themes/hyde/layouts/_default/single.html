@@ -36,6 +36,10 @@
   {{ .Content }}
 </div>
 
+{{/* Schema FAQPage — dipanggil SETELAH .Content karena datanya diisi oleh
+     shortcode {{< faq >}} saat konten dirender. Kalau tidak ada FAQ, no-op. */}}
+{{ partial "meta/schema/FAQ.html" . }}
+
 
 {{ partial "next-prev" . }}
 

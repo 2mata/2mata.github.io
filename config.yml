@@ -9,6 +9,25 @@ enableEmoji: true
 paginate: 1
 
 
+# llms.txt — peta situs untuk agen AI (konvensi llmstxt.org).
+# Digenerate dari konten oleh layouts/index.llms.txt supaya tidak pernah basi.
+outputs:
+  home:
+    - HTML
+    - RSS
+    - llms
+
+mediaTypes:
+  text/plain:
+    suffixes: [txt]
+
+outputFormats:
+  llms:
+    mediaType: text/plain
+    baseName: llms
+    isPlainText: true
+
+
 markup:
   goldmark:
     renderer:
@@ -49,6 +68,8 @@ related:
 
 Menus:
   main:
+    - Name: "Blog"
+      URL: "/blog/"
     - Name: "Tentang Kami"
       URL: "/about/"
     - Name: "Disclaimer"

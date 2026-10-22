@@ -1,0 +1,17 @@
+{{- /* /llms.txt — peta situs untuk agen AI (konvensi llmstxt.org).
+       Digenerate dari konten, jadi otomatis ikut setiap artikel baru.
+       Struktur: H1 nama situs, blockquote ringkasan, daftar tautan inti
+       berisi deskripsi satu baris, lalu bagian "Optional" untuk tautan sekunder. */ -}}
+{{- $home := site.GetPage "/" -}}
+# {{ site.Title }}
+
+> {{ with $home }}{{ .Params.description }}{{ end }}
+
+## Artikel
+{{ range site.RegularPages.ByDate.Reverse -}}
+- [{{ .Title }}]({{ .Permalink }}){{ with .Params.description }}: {{ . }}{{ end }}
+{{ end }}
+## Optional
+- [Sitemap XML]({{ "sitemap.xml" | absURL }})
+- [Peta situs halaman]({{ "sitemap-html/" | absURL }})
+- [Tentang Kami]({{ "about/" | absURL }})

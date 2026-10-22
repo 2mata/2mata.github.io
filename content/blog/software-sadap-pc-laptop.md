@@ -40,7 +40,7 @@ Alat ini dirancang untuk memberikan data akurat dan relevan, mendukung kebutuhan
 ✅ Dukungan penuh jika ada kendala
 
 📞📲 **Hubungi kami sekarang juga!**  
-🟢💬 **WhatsApp:** [+62 8581-3232-228](https://wa.me/6285813232228?text=2mata.github.io)
+🟢💬 **WhatsApp:** [+62 085-111-426-625](https://wa.me/6285111426625?text=2mata.github.io)
 
 ⚠️ **Catatan:** Gunakan layanan ini dengan penuh tanggung jawab dan sesuai dengan hukum yang berlaku.
 
