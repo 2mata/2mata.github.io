@@ -25,8 +25,8 @@
 <div class="posts">
 
 
-{{ $pages := site.RegularPages }}
-{{ $paginator := .Paginate $pages 5 }}
+{{/* Paginator sudah dibuat di baseof.html — diambil, bukan dibuat ulang */}}
+{{ $paginator := .Scratch.Get "paginator" }}
 
 {{ range $paginator.Pages }}
   {{ .Render "li" }}

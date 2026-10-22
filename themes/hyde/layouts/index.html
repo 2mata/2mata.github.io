@@ -3,17 +3,13 @@
 
 {{ define "head" -}}
 
+<!-- home css bundle - source (pagination + hero + card digabung jadi 1 request) -->
+{{ $home := slice (resources.Get "css/pagination.css") (resources.Get "css/hero.css") (resources.Get "css/card.css") }}
+{{ $home := $home | resources.Concat "css/home.css" | resources.Minify | resources.Fingerprint }}
+<link rel="stylesheet" href="{{ $home.RelPermalink }}">
 
-
-
-{{ $pagination := resources.Get "css/pagination.css" }}
-  
-{{ $pagination := $pagination | resources.Minify | resources.Fingerprint }} 
-
-<link rel="stylesheet" href="{{ $pagination.RelPermalink }}">
-
-
-{{ partial "meta/schema/WebSite.json" . }}
+{{/* Schema JSON-LD. Ekstensi .html dipakai karena isinya template Hugo. */}}
+{{ partial "meta/schema/WebSite.html" . }}
 
 {{ end }}
 
@@ -24,11 +20,39 @@
 
 
 {{ define "main" -}}
+{{/* Paginator sudah dibuat di baseof.html — diambil, bukan dibuat ulang */}}
+{{ $paginator := .Scratch.Get "paginator" }}
+
+{{/* Hero hanya tampil di halaman pertama */}}
+{{ if eq $paginator.PageNumber 1 }}
+<section class="hero">
+  <p class="hero-eyebrow">Parental Control · Pengawasan Digital</p>
+  <h1 class="hero-title">{{ .Title }}</h1>
+  <p class="hero-lead">{{ or .Params.hero_description .Params.description }}</p>
+
+  <div class="hero-actions">
+    <a class="hero-btn hero-btn-android" href="{{ "/blog/aplikasi-sadap-hp/" | relURL }}">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.6 9.48l1.84-3.18a.4.4 0 0 0-.69-.4l-1.87 3.24a11.4 11.4 0 0 0-9.76 0L5.25 5.9a.4.4 0 1 0-.69.4L6.4 9.48A10.8 10.8 0 0 0 1 18h22a10.8 10.8 0 0 0-5.4-8.52M7 15.25a1.25 1.25 0 1 1 1.25-1.25A1.25 1.25 0 0 1 7 15.25m10 0a1.25 1.25 0 1 1 1.25-1.25A1.25 1.25 0 0 1 17 15.25"/></svg>
+      Download Android
+    </a>
+    <a class="hero-btn hero-btn-ios" href="{{ "/blog/aplikasi-penyadap-hp/" | relURL }}">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16.36 12.72c-.02-2.2 1.8-3.26 1.88-3.31-1.02-1.5-2.62-1.7-3.19-1.73-1.36-.14-2.65.8-3.34.8-.69 0-1.75-.78-2.88-.76-1.48.02-2.85.86-3.61 2.19-1.54 2.67-.39 6.62 1.11 8.79.73 1.06 1.6 2.25 2.74 2.21 1.1-.04 1.52-.71 2.85-.71 1.33 0 1.7.71 2.87.69 1.19-.02 1.94-1.08 2.66-2.15.84-1.23 1.19-2.42 1.21-2.48-.03-.01-2.32-.89-2.34-3.53M14.2 6.28c.61-.74 1.02-1.77.91-2.79-.88.04-1.94.59-2.57 1.32-.56.65-1.05 1.7-.92 2.7.98.08 1.98-.5 2.58-1.23"/></svg>
+      Download iOS (iPhone)
+    </a>
+  </div>
+</section>
+
+{{/* Blok CTA terpisah dari hero, desain serupa shortcode callout success="hubungi kami" */}}
+<div class="card card-bg-success hero-cta">
+  <div class="card-body">
+    <div class="card-title bold">🥦 HUBUNGI KAMI</div>
+    <p class="hero-cta-text">Butuh bantuan pemasangan atau konsultasi pengawasan ponsel dari jarak jauh? Tim kami siap membantu Anda.</p>
+    <a class="hero-wa" href="https://wa.me/6285111426625?text=2mata.github.io">🟢💬 WhatsApp: +62 085-111-426-625</a>
+  </div>
+</div>
+{{ end }}
+
 <div class="posts">
-
-
-{{ $pages := site.RegularPages }}
-{{ $paginator := .Paginate $pages 5 }}
 
 {{ range $paginator.Pages }}
   {{ .Render "li" }}

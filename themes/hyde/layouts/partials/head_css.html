@@ -1,21 +1,13 @@
-<!-- poole css - source -->
-{{ $poole := resources.Get "css/poole.css" -}}  
-{{- $poole := $poole | resources.Minify | resources.Fingerprint -}}
-<link rel="stylesheet" href="{{ $poole.RelPermalink }}">
-
-<!-- hyde css - source -->
-{{- $css := resources.Get "css/hyde.css" -}}
-{{- $css := $css | resources.Minify | resources.Fingerprint -}} 
-<link rel="stylesheet" href="{{ $css.RelPermalink }}">
-
-<!-- print css - source -->
+<!-- print css - source (hanya dimuat saat mencetak, jadi tidak menghambat render) -->
 {{- $print := resources.Get "css/print.css" -}}
-{{- $print := $print | resources.Minify | resources.Fingerprint -}} 
+{{- $print := $print | resources.Minify | resources.Fingerprint -}}
 <link rel="stylesheet" href="{{ $print.RelPermalink }}" media="print">
 
-<!-- syntax css - source -->
-{{- $syntax := resources.Get "css/syntax.css" -}}
-{{- $syntax := $syntax | resources.Minify | resources.Fingerprint -}} 
-<link rel="stylesheet" href="{{ $syntax.RelPermalink }}">
+<!-- main css bundle - source (poole + hyde + syntax digabung jadi 1 request, urutan tetap sama) -->
+{{- $main := slice (resources.Get "css/poole.css") (resources.Get "css/hyde.css") (resources.Get "css/syntax.css") -}}
+{{- $main := $main | resources.Concat "css/main.css" | resources.Minify | resources.Fingerprint -}}
+<link rel="stylesheet" href="{{ $main.RelPermalink }}">
 
-
+<!-- preload font di atas lipatan (400 body & 800 judul hero) agar teks LCP cepat tampil -->
+<link rel="preload" href="{{ "fonts/outfit-v11-latin-regular.woff2" | absURL }}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ "fonts/outfit-v11-latin-800.woff2" | absURL }}" as="font" type="font/woff2" crossorigin>

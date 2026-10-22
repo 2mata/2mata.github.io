@@ -1,8 +1,10 @@
 
 {{ define "head" -}}
 
-{{ partial "meta/schema/Article.json" . }}
-{{ partial "meta/schema/BreadCrumbs.json" . }}
+{{/* Schema JSON-LD. Partial ini berekstensi .html (bukan .json) karena isinya
+     template Hugo; ekstensi .json membuat editor salah parse sebagai JSON. */}}
+{{ partial "meta/schema/Article.html" . }}
+{{ partial "meta/schema/BreadCrumbs.html" . }}
 
 
 <!-- blog css - source -->

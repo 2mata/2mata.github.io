@@ -1,8 +1,16 @@
 <!DOCTYPE html>
-<html {{ with .Site.LanguageCode -}} lang="{{.}}"{{end}}>
+{{/* Bahasa halaman. `.Site.Language.Locale` menggantikan `.Site.LanguageCode`
+     yang deprecated sejak Hugo 0.158; fallback "id" menjaga nilai tetap terisi. */}}
+<html lang="{{ or .Site.Language.Locale "id" }}">
 <head> 
   {{ hugo.Generator }}
 
+  {{/* Paginator diinisialisasi SEKALI di sini untuk halaman daftar (home/section/taxonomy/term).
+       Dipakai oleh: <title> unik per halaman di meta/data.html, daftar post di
+       index.html & list.html, serta navigasi di partials/pagination.html. */}}
+  {{ if in (slice "home" "section" "taxonomy" "term") .Kind -}}
+    {{- .Scratch.Set "paginator" (.Paginate site.RegularPages 5) -}}
+  {{- end }}
 
   {{- partial "meta/data" . -}}
   {{- partial "meta/open_graph" . -}}

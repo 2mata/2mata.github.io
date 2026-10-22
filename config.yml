@@ -1,5 +1,5 @@
 baseURL: https://2mata.github.io/
-languageCode: id
+locale: id
 title: 2mata
 copyright: "[2mata.github.io](/)"
 theme: hyde

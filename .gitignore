@@ -1,0 +1,12 @@
+# Hugo — hasil build & cache (dibuat ulang tiap build)
+/public/
+/resources/
+.hugo_build.lock
+
+# Jangan abaikan assets/ — WebP q80 hasil pre-generate disimpan di sana
+# agar build tidak perlu konversi gambar (lihat render-image.html).
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp

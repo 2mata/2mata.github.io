@@ -1,23 +1,42 @@
+{{- /* Render hook gambar — pemetaan komponen:
+       1. Gambar eksternal (http/https)          -> <img loading="lazy"> (apa adanya)
+       2. Gambar lokal raster di assets/         -> <picture>: source foo.webp (pre-generate q80 1:1) + fallback file asli
+       3. Gambar lokal non-raster (svg/gif)      -> <img> biasa (GIF tidak dikonversi agar animasi tetap utuh)
+       4. Gambar masih di static/ (belum pindah) -> <img> biasa + width/height dari imageConfig
+       Catatan: lebar/tinggi selalu ditulis agar tidak terjadi layout shift (CLS). */ -}}
 {{- $src := .Destination | safeURL -}}
+{{- $rel := strings.TrimPrefix "/" .Destination -}}
 
+{{- /* alt diambil dari caption markdown, dibersihkan dari karakter non-huruf */ -}}
+{{- $caption := .Text | lower -}}
+{{- $replacere := replaceRE "[^a-zA-Z\\s]" "" $caption -}}
+{{- $trim := trim $replacere " " -}}
+{{- $split := split $trim "  " | first 3 -}}
+{{- $alt := delimit $split " " -}}
 
 {{- if strings.HasPrefix .Destination "http" -}}
-
-{{ $caption := .Text | lower }}
-{{ $replacere := replaceRE "[^a-zA-Z\\s]" "" $caption }}
-{{ $trim := trim $replacere " " }}
-{{ $split := split $trim "  " | first 3 }}
-{{ $alt := delimit $split " " }}
-
 <img class="img-fluid mb-5 mt-5" src="{{ .Destination | safeURL }}" alt="{{ $alt }}" loading="lazy" />
+
 {{- else -}}
-{{- $config := imageConfig (printf "/static/%s" $src) -}}
-
-{{ $caption := .Text | lower }}
-{{ $replacere := replaceRE "[^a-zA-Z\\s]" "" $caption }}
-{{ $trim := trim $replacere " " }}
-{{ $split := split $trim "  " | first 3 }}
-{{ $alt := delimit $split " " }}
-
-<img class="img-fluid mb-5 mt-5" src="{{ .Destination | safeURL }}" alt="{{ $alt }}" loading="lazy" height="{{$config.Height}}" width="{{$config.Width}}" />
+  {{- $res := resources.Get $rel -}}
+  {{- /* WebP q80 1:1 sudah digenerate sekali di luar build dan disimpan bersebelahan
+         dengan file aslinya: assets/…/foo.png -> assets/…/foo.webp.
+         Jadi build tidak lagi menjalankan .Process "webp" (di mesin ini 14 detik/gambar). */ -}}
+  {{- $webp := resources.Get (printf "%s.webp" (strings.TrimSuffix (path.Ext $rel) $rel)) -}}
+  {{- if and $res $webp -}}
+<picture>
+  <source srcset="{{ $webp.RelPermalink }}" type="image/webp">
+  <img class="img-fluid mb-5 mt-5" src="{{ $res.RelPermalink }}" alt="{{ $alt }}" loading="lazy" width="{{ $res.Width }}" height="{{ $res.Height }}">
+</picture>
+  {{- else if $res -}}
+<img class="img-fluid mb-5 mt-5" src="{{ $res.RelPermalink }}" alt="{{ $alt }}" loading="lazy" width="{{ $res.Width }}" height="{{ $res.Height }}" />
+  {{- else -}}
+{{- /* Fallback: gambar masih di static/. Guard os.FileExists wajib karena
+       imageConfig MENGGAGALKAN seluruh build bila file tidak ditemukan. */ -}}
+{{- $config := dict "Width" 0 "Height" 0 -}}
+{{- if os.FileExists (printf "static/%s" $rel) -}}
+  {{- $config = imageConfig (printf "/static/%s" $rel) -}}
+{{- end -}}
+<img class="img-fluid mb-5 mt-5" src="{{ .Destination | safeURL }}" alt="{{ $alt }}" loading="lazy" height="{{ $config.Height }}" width="{{ $config.Width }}" />
+  {{- end -}}
 {{- end -}}
