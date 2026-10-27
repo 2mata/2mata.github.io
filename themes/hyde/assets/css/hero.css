@@ -11,7 +11,9 @@
     border: 1px solid rgba(255, 255, 255, .08);
     border-radius: 1.75rem;
     color: #fff;
-    background: radial-gradient(circle, rgb(93.45% 93.45% 93.45% / 0.04) 1.00px, transparent 1.55px) 0.00px 0.00px / 13.50px 13.50px rgb(0% 1.876% 0%);
+    /* Warna dasar disamakan dengan sidebar nav (.sidebar di hyde.css = #202020);
+       pola dot grid dipertahankan sebagai tekstur di atasnya. */
+    background: radial-gradient(circle, rgb(93.45% 93.45% 93.45% / 0.04) 1.00px, transparent 1.55px) 0.00px 0.00px / 13.50px 13.50px #202020;
     box-shadow: var(--sl-shadow-lg);
 }
 
