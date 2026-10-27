@@ -21,6 +21,8 @@
     {{- $desc = printf "Daftar semua %s yang dibahas di %s." .Title site.Title -}}
   {{- else if eq .Kind "section" -}}
     {{- $desc = printf "Kumpulan artikel %s: panduan, ulasan, dan tips praktis seputar aplikasi pengawasan digital serta parental control." site.Title -}}
+  {{- else if eq .Kind "404" -}}
+    {{- $desc = printf "Halaman yang Anda cari tidak ditemukan di %s. Telusuri daftar artikel atau kembali ke beranda untuk melanjutkan." site.Title -}}
   {{- else -}}
     {{- $desc = printf "Panduan dan ulasan %s - %s." .Title site.Title -}}
   {{- end -}}

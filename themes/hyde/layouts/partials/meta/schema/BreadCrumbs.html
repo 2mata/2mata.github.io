@@ -1,29 +1,44 @@
-{{ $dot := . }}
-{{ $dot.Scratch.Set "path" "" }}
-{{ $dot.Scratch.Set "breadcrumb" slice }}
+{{/* Breadcrumb JSON-LD — dipakai di single.html.
+     Nama tiap item diambil dari Title halaman aslinya (mis. "Blog",
+     "Cara Sadap WhatsApp"), bukan slug URL-nya. Google menampilkan nama ini
+     apa adanya di hasil pencarian, jadi slug seperti "aplikasi-sadap-mspy"
+     kurang informatif. Slug hanya dipakai sebagai fallback. */}}
 
-{{ $url := replace .Permalink ( printf "%s" .Site.BaseURL) "" }}
-{{ $.Scratch.Add "path" .Site.BaseURL }}
+{{/* Item pertama: beranda */}}
+{{ $items := slice (dict "url" site.BaseURL "name" "Beranda") }}
 
-{{ $.Scratch.Add "breadcrumb" (slice (dict "url" .Site.BaseURL "name" "home" "position" 1 )) }}
-  {{ range $index, $element := split $url "/" }}
-    {{ $dot.Scratch.Add "path" $element }}
-    {{ $.Scratch.Add "path" "/" }}
-    {{ if ne $element "" }}
-    {{ $.Scratch.Add "breadcrumb" (slice (dict "url" ($.Scratch.Get "path") "name" . "position" (add $index 2))) }}
+{{/* Buang baseURL dan garis miring di ujung, lalu pecah per segmen:
+     "blog/cara-sadap-wa/" -> ["blog", "cara-sadap-wa"] */}}
+{{ $slug := replace .Permalink site.BaseURL "" | strings.TrimSuffix "/" }}
+{{ $path := "" }}
+{{ range $element := split $slug "/" }}
+  {{ $path = printf "%s/%s" $path $element }}
+
+  {{/* Coba cocokkan segmen dengan halaman aslinya agar dapat Title + URL kanonik */}}
+  {{ $name := "" }}
+  {{ $url := "" }}
+  {{ with site.GetPage $path }}
+    {{ $name = .Title }}
+    {{ $url = .Permalink }}
   {{ end }}
+
+  {{/* Fallback: slug diubah jadi kata biasa, mis. "cara-sadap-wa" -> "Cara Sadap Wa" */}}
+  {{ if not $name }}{{ $name = $element | replaceRE `-` " " | title }}{{ end }}
+  {{ if not $url }}{{ $url = absURL (strings.TrimPrefix "/" $path) }}{{ end }}
+
+  {{ $items = $items | append (dict "url" $url "name" $name) }}
 {{ end }}
 
 <script type="application/ld+json">
 {
-  "@context": "http://schema.org",
+  "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  "itemListElement": [{{ range $.Scratch.Get "breadcrumb" }}{{ if ne .position 1 }},{{ end }}{
+  "itemListElement": [{{ range $i, $item := $items }}{{ if $i }},{{ end }}{
         "@type": "ListItem",
-        "position": {{ .position }},
+        "position": {{ add $i 1 }},
         "item": {
-          "@id": "{{ .url }}",
-          "name": "{{ .name }}"
+          "@id": {{ $item.url | jsonify }},
+          "name": {{ $item.name | jsonify }}
         }
     }{{ end }}]
 }

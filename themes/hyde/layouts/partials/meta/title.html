@@ -3,6 +3,10 @@
        Halaman paginasi (page 2 ke atas) diberi sufiks unik agar tidak duplikat.
        Paginator di-set di baseof.html, jadi aman dibaca dari sini. */ -}}
 {{- $title := .Title -}}
+{{- if eq .Kind "404" -}}
+  {{/* .Title halaman 404 bawaan Hugo masih "404 Page not found" (Inggris). */}}
+  {{- $title = printf "Halaman Tidak Ditemukan (404) - %s" site.Title -}}
+{{- end -}}
 {{- with .Scratch.Get "paginator" -}}
   {{- if gt .PageNumber 1 -}}
     {{- $title = printf "%s - Halaman %d" $title .PageNumber -}}

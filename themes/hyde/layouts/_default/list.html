@@ -22,6 +22,11 @@
 
 
 {{ define "main" -}}
+{{/* H1 untuk halaman daftar (blog/tag/author). Disembunyikan secara visual
+     karena desain halaman hanya menampilkan kartu, tetapi heading tetap ada
+     demi SEO & WCAG 2.1 AA. */}}
+<h1 class="visually-hidden">{{ .Title }}</h1>
+
 <div class="posts">
 
 

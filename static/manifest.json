@@ -1,5 +1,10 @@
 {
-    "name": "",
+    "name": "2mata - Aplikasi Sadap HP & Parental Control",
+    "short_name": "2mata",
+    "description": "Panduan, ulasan, dan layanan pengawasan digital untuk iPhone & Android — solusi parental control untuk orang tua.",
+    "lang": "id",
+    "start_url": "/",
+    "scope": "/",
     "icons": [
         {
             "src": "/android-chrome-96x96.png",

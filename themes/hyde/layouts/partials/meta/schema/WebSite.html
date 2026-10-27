@@ -1,25 +1,41 @@
-{{- /* Schema WebSite (dipakai di HomePage).
-       Catatan: WebSite TIDAK memuat author/datePublished.
-       SearchAction dihapus karena situs tidak memiliki fitur pencarian. */ -}}
-{{- $desc := .Description | default (printf "Panduan %s - %s" .Title .Site.Title) -}}
+{{- /* Schema WebSite + entitas Organization. Dipanggil site-wide dari baseof.html
+       supaya node Organization selalu tersedia untuk direferensikan skema lain.
+
+       Catatan:
+       - WebSite TIDAK memuat author/datePublished.
+       - SearchAction dihapus karena situs tidak memiliki fitur pencarian.
+       - Organization diberi @id tetap (`#organization`) agar tidak perlu
+         dideklarasikan ulang (nama + logo) di setiap halaman artikel.
+       - Deskripsi diambil dari home (_index.md), bukan dari halaman yang sedang
+         dirender, karena node ini menggambarkan situs, bukan halaman. */ -}}
+{{- $desc := site.Home.Description | default (printf "Panduan, ulasan, dan layanan %s untuk pengawasan digital." site.Title) -}}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebSite",
-  "url": {{ .Site.BaseURL | jsonify }},
-  "name": {{ .Site.Title | jsonify }},
-  "description": {{ $desc | jsonify }},
-  "inLanguage": {{ or .Site.Language.Locale "id" | jsonify }},
-  "publisher": {
-    "@type": "Organization",
-    "name": {{ .Site.Title | jsonify }},
-    "url": {{ .Site.BaseURL | jsonify }},
-    "logo": {
-      "@type": "ImageObject",
-      "url": {{ "logo.png" | absURL | jsonify }},
-      "width": 600,
-      "height": 60
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": {{ printf "%s#website" site.BaseURL | jsonify }},
+      "url": {{ site.BaseURL | jsonify }},
+      "name": {{ site.Title | jsonify }},
+      "description": {{ $desc | jsonify }},
+      "inLanguage": {{ or site.Language.Locale "id" | jsonify }},
+      "publisher": {
+        "@id": {{ printf "%s#organization" site.BaseURL | jsonify }}
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": {{ printf "%s#organization" site.BaseURL | jsonify }},
+      "name": {{ site.Title | jsonify }},
+      "url": {{ site.BaseURL | jsonify }},
+      "logo": {
+        "@type": "ImageObject",
+        "url": {{ "logo.png" | absURL | jsonify }},
+        "width": 600,
+        "height": 60
+      }
     }
-  }
+  ]
 }
 </script>

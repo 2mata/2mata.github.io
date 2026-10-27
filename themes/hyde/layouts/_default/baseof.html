@@ -7,13 +7,31 @@
 
   {{/* Paginator diinisialisasi SEKALI di sini untuk halaman daftar (home/section/taxonomy/term).
        Dipakai oleh: <title> unik per halaman di meta/data.html, daftar post di
-       index.html & list.html, serta navigasi di partials/pagination.html. */}}
+       index.html & list.html, serta navigasi di partials/pagination.html.
+
+       Koleksi diambil dari .Pages milik halaman itu sendiri, BUKAN site.RegularPages.
+       Sebelumnya koleksi global dipakai untuk semua kind sehingga /blog/, /tags/*,
+       dan /author/* menampilkan daftar yang identik (duplikat konten + halaman
+       statis seperti /about/ ikut muncul di daftar blog). */}}
   {{ if in (slice "home" "section" "taxonomy" "term") .Kind -}}
-    {{- .Scratch.Set "paginator" (.Paginate site.RegularPages 5) -}}
+    {{- $pages := .Pages -}}
+    {{- if eq .Kind "home" -}}
+      {{- /* Home = daftar artikel blog. */ -}}
+      {{- $pages = where site.RegularPages "Section" "blog" -}}
+    {{- end -}}
+    {{- .Scratch.Set "paginator" (.Paginate $pages 5) -}}
   {{- end }}
 
   {{- partial "meta/data" . -}}
   {{- partial "meta/open_graph" . -}}
+  {{- partial "meta/schema/WebSite" . -}}
+
+  {{/* Halaman paginasi (halaman 2 ke atas) tidak diindeks: isinya tidak punya
+       kata kunci sendiri dan hanya bersaing dengan /blog/ di hasil pencarian.
+       "follow" tetap dipakai supaya tautan ke artikel di dalamnya tetap
+       ditelusuri crawler. Halaman 1 dan halaman artikel tetap index, follow. */}}
+  {{ with .Scratch.Get "paginator" }}{{ if gt .PageNumber 1 }}<meta name="robots" content="noindex, follow">
+  {{ end }}{{ end }}
 
   {{- partial "head_css" . -}}
 
@@ -23,18 +41,6 @@
 
   {{ block "head" . -}}{{- end }}
 
-
-  <!-- custom css - inline -->
-
-  {{ $fonts := resources.Get "css/fonts.css" }}
-  {{ $custom := resources.Get "css/custom.css" }}
-  {{ $inline := slice $fonts $custom | resources.Concat "stylez.css" | fingerprint }}
-
-  <style type="text/css">
-
-    {{ $inline.Content | safeCSS }}
-
-  </style>
 </head>
 
 
@@ -52,7 +58,7 @@
 
     <footer>
       <div class="footer">
-      <p>{{ with .Site.Copyright }}Copyright &copy; {{ now.Format "2006"}} ⚊ {{ . | markdownify }}{{ else }}&copy; {{ now.Format "2006"}}. All rights reserved. {{end}} {{ .WordCount }}</p>
+      <p>{{ with .Site.Copyright }}Copyright &copy; {{ now.Format "2006"}} ⚊ {{ . | markdownify }}{{ else }}&copy; {{ now.Format "2006"}}. All rights reserved. {{end}}</p>
       </div>
     </footer>
 

@@ -15,13 +15,17 @@
 
 <script type="application/ld+json">
 {
-  "@context": "http://schema.org",
+  "@context": "https://schema.org",
   "@type": "Article",
+  {{/* author dirangkai dulu ke slice lalu di-jsonify sekali. Kalau suatu artikel
+       punya lebih dari satu term author, hasilnya array — bukan key "author"
+       yang muncul berulang dan membuat JSON-LD tidak valid. */}}
+  {{ $authors := slice }}
   {{ range (.GetTerms "author") }}
-  "author": {
-    "name" : "{{ .LinkTitle | default .Site.Params.author }}",
-    "url": "{{.Permalink}}"
-  },
+    {{ $authors = $authors | append (dict "@type" "Person" "name" (.LinkTitle | default .Site.Params.author) "url" .Permalink) }}
+  {{ end }}
+  {{ with $authors }}
+  "author": {{ if eq (len .) 1 }}{{ index . 0 | jsonify }}{{ else }}{{ . | jsonify }}{{ end }},
   {{ end }}
   "headline": "{{ .Title }}",
   "description": "{{ if .Params.description  }}{{ .Params.description }}{{else}}Update {{ now.Format "2006"}}, seputar tutorial {{.Title}} - {{.Site.Title}}{{end}}",
@@ -29,7 +33,7 @@
   "datePublished" : "{{ .Date.Format "2006-01-02T15:04:05Z" }}",
   "dateModified" : "{{ .Lastmod.Format "2006-01-02T15:04:05Z"  }}",
   "image" : {
-      "@context": "http://schema.org",
+      "@context": "https://schema.org",
       "@type": "ImageObject",
       "url": "{{ $src | absURL }}",
       "contentUrl": "{{ $src | absURL }}",
@@ -40,14 +44,9 @@
     },
   "mainEntityOfPage" : "{{ with .OutputFormats.Get "HTML" }}{{ .Permalink }}{{ end }}",
   "publisher" : {
-    "@type": "Organization",
-    "name" : "{{ $.Site.Title }}",
-    "logo" : {
-        "@type" : "ImageObject",
-        "url": "https://2mata.github.io/logo.png",
-        "width": "600",
-        "height": "60"
-    }
+    {{/* Referensi ke node Organization yang dideklarasikan sekali di
+         meta/schema/WebSite.html (site-wide) — lihat @id "#organization". */}}
+    "@id": {{ printf "%s#organization" site.BaseURL | jsonify }}
   }
 }
 </script>

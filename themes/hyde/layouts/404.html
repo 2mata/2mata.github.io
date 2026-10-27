@@ -1,4 +1,4 @@
 {{ define "main" -}}
-<h1>404: Page not found</h1>
-<p class="lead">Sorry, we've misplaced that URL or it's pointing to something that doesn't exist. <a href="{{ .Site.BaseURL }}">Head back home</a> to try finding it again.</p>
+<h1>404: Halaman tidak ditemukan</h1>
+<p class="lead">Alamat yang Anda buka tidak ada atau sudah dipindahkan. <a href="{{ "" | absURL }}">Kembali ke beranda</a>, atau telusuri <a href="{{ "blog/" | absURL }}">daftar artikel kami</a>.</p>
 {{- end }}

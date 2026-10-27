@@ -3,8 +3,11 @@
 {{- $print := $print | resources.Minify | resources.Fingerprint -}}
 <link rel="stylesheet" href="{{ $print.RelPermalink }}" media="print">
 
-<!-- main css bundle - source (poole + hyde + syntax digabung jadi 1 request, urutan tetap sama) -->
-{{- $main := slice (resources.Get "css/poole.css") (resources.Get "css/hyde.css") (resources.Get "css/syntax.css") -}}
+<!-- main css bundle - source (poole + hyde + syntax + fonts + custom digabung jadi 1 request).
+     urutan tetap sama seperti sebelumnya: poole/hyde/syntax dulu, baru fonts & custom
+     (dulu fonts + custom di-inline via <style> di baseof.html, kini jadi satu file
+     terpisah supaya tidak memicu parse error template Hugo di language server CSS). -->
+{{- $main := slice (resources.Get "css/poole.css") (resources.Get "css/hyde.css") (resources.Get "css/syntax.css") (resources.Get "css/fonts.css") (resources.Get "css/custom.css") -}}
 {{- $main := $main | resources.Concat "css/main.css" | resources.Minify | resources.Fingerprint -}}
 <link rel="stylesheet" href="{{ $main.RelPermalink }}">
 

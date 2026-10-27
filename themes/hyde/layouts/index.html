@@ -8,9 +8,6 @@
 {{ $home := $home | resources.Concat "css/home.css" | resources.Minify | resources.Fingerprint }}
 <link rel="stylesheet" href="{{ $home.RelPermalink }}">
 
-{{/* Schema JSON-LD. Ekstensi .html dipakai karena isinya template Hugo. */}}
-{{ partial "meta/schema/WebSite.html" . }}
-
 {{ end }}
 
 
@@ -50,6 +47,10 @@
     <a class="hero-wa" href="https://wa.me/6285111426625?text=2mata.github.io">🟢💬 WA: +62 085-111-426-625</a>
   </div>
 </div>
+{{ else }}
+{{/* Halaman 2+ tidak menampilkan hero. H1 tetap disediakan (tersembunyi secara
+     visual) agar setiap halaman tetap memiliki heading utama untuk SEO & a11y. */}}
+<h1 class="visually-hidden">{{ .Title }} - Halaman {{ $paginator.PageNumber }}</h1>
 {{ end }}
 
 <div class="posts">

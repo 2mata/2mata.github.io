@@ -9,7 +9,10 @@
 <title>{{ partial "meta/title.html" . }}</title>
 <meta name="description" content="{{ partial "meta/description.html" . }}">
 
-<!-- Favicon -->
+<!-- Favicon. favicon.ico dideklarasikan eksplisit: tanpa ini browser tetap
+     menebak lewat request otomatis ke /favicon.ico, tetapi lebih rapi bila
+     dituliskan (dan berfungsi untuk browser lama yang hanya baca .ico). -->
+<link rel="icon" href="{{ "favicon.ico" | absURL }}" sizes="any">
 <link rel="apple-touch-icon" sizes="152x152" href="{{ "apple-touch-icon.png" | absURL }}">
 <link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32x32.png" | absURL }}">
 <link rel="icon" type="image/png" sizes="16x16" href="{{ "favicon-16x16.png" | absURL }}">

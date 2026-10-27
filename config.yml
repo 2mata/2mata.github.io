@@ -6,7 +6,6 @@ theme: hyde
 
 
 enableEmoji: true
-paginate: 1
 
 
 # llms.txt — peta situs untuk agen AI (konvensi llmstxt.org).
@@ -74,7 +73,7 @@ Menus:
       URL: "/about/"
     - Name: "Disclaimer"
       URL: "/disclaimer/"
-    - Name: "Privacy Police"
+    - Name: "Privacy Policy"
       URL: "/privacy-policy/"
     - Name: "Jasa Sadap iPhone"
       URL: "/blog/aplikasi-penyadap-hp/"
