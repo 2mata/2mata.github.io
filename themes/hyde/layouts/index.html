@@ -7,6 +7,7 @@
 {{ $home := slice (resources.Get "css/pagination.css") (resources.Get "css/hero.css") (resources.Get "css/card.css") }}
 {{ $home := $home | resources.Concat "css/home.css" | resources.Minify | resources.Fingerprint }}
 <link rel="stylesheet" href="{{ $home.RelPermalink }}">
+<meta name="msvalidate.01" content="8EBA2F16E4079A3BF2525F4FAF8E7435" />
 
 {{ end }}
 
