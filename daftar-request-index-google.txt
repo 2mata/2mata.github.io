@@ -1,0 +1,132 @@
+==========================================================================
+DAFTAR REQUEST PENGINDEKSAN GOOGLE
+Situs    : 2mata.github.io
+Dibuat   : 2026-10-27
+Isi      : 35 artikel blog + 4 halaman utama
+Sumber   : sitemap.xml (live) + front matter artikel
+==========================================================================
+
+
+CARA PAKAI (SEKALI BACA, LALU LANGSUNG PAKAI)
+--------------------------------------------------------------------------
+1. Buka  https://search.google.com/search-console
+2. Pilih properti: 2mata.github.io
+3. Di kotak paling atas ("Inspeksi URL"), tempel 1 url dari daftar ini
+4. Tekan Enter, tunggu sampai muncul hasil pemeriksaan
+5. Klik tombol "Minta Pengindeksan"
+6. Tunggu sampai muncul pesan "Pengindeksan telah diminta"
+7. Setelah selesai, ubah kata BELUM DIMINTA di baris itu menjadi kata
+   SUDAH DIMINTA
+8. Kerjakan satu GRUP dulu (10 url), baru lanjut ke grup berikutnya
+
+
+KETERANGAN SINGKAT (biar tidak bingung saat membaca)
+--------------------------------------------------------------------------
+Susunan tiap baris:
+   nomor.   alamat url   perkiraan jumlah kata   status
+
+Status :
+   BELUM DIMINTA   = belum pernah diminta pengindeksan
+   SUDAH DIMINTA   = sudah diminta pengindeksan
+
+Angka :
+   "~3.900 kata" = perkiraan panjang artikel.
+   Angka lebih besar = artikel lebih panjang / lebih lengkap.
+
+Urutan :
+   Dari yang paling penting ke paling tidak penting.
+   Pertimbangan: panjang artikel (kualitas) + artikel pilar + halaman jasa.
+
+CATATAN PENTING:
+   Kategori BAJAK / HACK AKUN sudah Anda minta sebelumnya.
+   4 url berikut sudah berstatus SUDAH DIMINTA dan tidak perlu diminta lagi:
+     - /blog/cara-bajak-whatsapp/
+     - /blog/cara-hack-akun-whatsapp/
+     - /blog/cara-hack-akun-instagram/
+     - /blog/cara-hack-facebook-messenger/
+   Kalau ternyata Anda juga sudah meminta artikel lain di grup itu, cukup
+   ubah kata BELUM DIMINTA di baris url tersebut menjadi SUDAH DIMINTA.
+
+
+==========================================================================
+BAGIAN A - HALAMAN UTAMA DAN HALAMAN JASA (kerjakan paling dulu)
+==========================================================================
+01. https://2mata.github.io/                                         halaman depan  BELUM DIMINTA
+02. https://2mata.github.io/blog/                                    index artikel  BELUM DIMINTA
+03. https://2mata.github.io/blog/aplikasi-sadap-hp/                 ~1.300 kata   BELUM DIMINTA
+04. https://2mata.github.io/blog/aplikasi-penyadap-hp/              ~2.100 kata   BELUM DIMINTA
+
+
+==========================================================================
+GRUP 1 - PRIORITAS TINGGI (artikel paling panjang, 5.000 kata ke atas)
+==========================================================================
+01. https://2mata.github.io/blog/aplikasi-sadap-hp-kidsguard-pro/    ~11.300 kata   BELUM DIMINTA
+02. https://2mata.github.io/blog/aplikasi-sadap-hp-spyera/           ~7.800 kata    BELUM DIMINTA
+03. https://2mata.github.io/blog/penyadap-iphone-tanpa-jailbreak/    ~7.300 kata    BELUM DIMINTA
+04. https://2mata.github.io/blog/aplikasi-sadap-hp-umobix/           ~7.100 kata    BELUM DIMINTA
+05. https://2mata.github.io/blog/software-sadap-pc-laptop/           ~7.000 kata    BELUM DIMINTA
+06. https://2mata.github.io/blog/sadap-android-tanpa-rooting/        ~6.000 kata    BELUM DIMINTA
+07. https://2mata.github.io/blog/aplikasi-sadap-hp-aispyer/          ~5.600 kata    BELUM DIMINTA
+08. https://2mata.github.io/blog/aplikasi-keylogger-android/         ~5.500 kata    BELUM DIMINTA
+09. https://2mata.github.io/blog/sadap-aplikasi-snapchat/            ~5.300 kata    BELUM DIMINTA
+10. https://2mata.github.io/blog/sadap-aplikasi-whatsapp/            ~5.100 kata    BELUM DIMINTA
+
+
+==========================================================================
+GRUP 2 - PRIORITAS MENENGAH (sekitar 3.000 sampai 4.500 kata)
+==========================================================================
+01. https://2mata.github.io/blog/aplikasi-sadap-hp-spyzie/           ~4.500 kata    BELUM DIMINTA
+02. https://2mata.github.io/blog/penyadap-hp-terbaik/                ~4.400 kata    BELUM DIMINTA
+03. https://2mata.github.io/blog/aplikasi-sadap-hp-spyic/            ~4.300 kata    BELUM DIMINTA
+04. https://2mata.github.io/blog/aplikasi-keylogger-iphone/          ~4.100 kata    BELUM DIMINTA
+05. https://2mata.github.io/blog/cara-hack-facebook-messenger/       ~3.900 kata    SUDAH DIMINTA
+06. https://2mata.github.io/blog/aplikasi-anti-selingkuh/            ~3.900 kata    BELUM DIMINTA
+07. https://2mata.github.io/blog/penyadap-hp-anak-remaja/            ~3.600 kata    BELUM DIMINTA
+08. https://2mata.github.io/blog/cara-hack-akun-instagram/           ~3.100 kata    SUDAH DIMINTA
+09. https://2mata.github.io/blog/sadap-aplikasi-viber/               ~3.100 kata    BELUM DIMINTA
+10. https://2mata.github.io/blog/sadap-panggilan-telepon-selular/    ~3.000 kata    BELUM DIMINTA
+
+
+==========================================================================
+GRUP 3 - PRIORITAS MENENGAH BAWAH (sekitar 2.500 sampai 3.000 kata)
+==========================================================================
+01. https://2mata.github.io/blog/cara-lacak-nomor-whatsapp/          ~3.000 kata    BELUM DIMINTA
+02. https://2mata.github.io/blog/aplikasi-sadap-mspy/                ~3.000 kata    BELUM DIMINTA
+03. https://2mata.github.io/blog/software-keylogger-windows-324/     ~3.000 kata    BELUM DIMINTA
+04. https://2mata.github.io/blog/aplikasi-sadap-hp-ispyoo/           ~2.800 kata    BELUM DIMINTA
+05. https://2mata.github.io/blog/sadap-aplikasi-facebook/            ~2.700 kata    BELUM DIMINTA
+06. https://2mata.github.io/blog/aplikasi-sadap-hp-teensafe/         ~2.700 kata    BELUM DIMINTA
+07. https://2mata.github.io/blog/aplikasi-sadap-hp-flexispy/         ~2.700 kata    BELUM DIMINTA
+08. https://2mata.github.io/blog/sadap-aplikasi-skype/               ~2.700 kata    BELUM DIMINTA
+09. https://2mata.github.io/blog/sadap-aplikasi-telegram/            ~2.600 kata    BELUM DIMINTA
+10. https://2mata.github.io/blog/aplikasi-sadap-highster-mobile/     ~2.500 kata    BELUM DIMINTA
+
+
+==========================================================================
+GRUP 4 - PRIORITAS RENDAH (artikel pendek atau sisanya)
+==========================================================================
+01. https://2mata.github.io/blog/aplikasi-sadap-hp-hoverwatch/       ~2.400 kata    BELUM DIMINTA
+02. https://2mata.github.io/blog/cara-hack-akun-whatsapp/            ~2.200 kata    SUDAH DIMINTA
+03. https://2mata.github.io/blog/cara-bajak-whatsapp/                ~2.100 kata    SUDAH DIMINTA
+04. https://2mata.github.io/blog/sadap-aplikasi-line/                ~2.100 kata    BELUM DIMINTA
+05. https://2mata.github.io/blog/aplikasi-sadap-hp-mobile-tracker/   ~2.100 kata    BELUM DIMINTA
+
+
+==========================================================================
+PROGRES (isi angka setelah selesai satu grup)
+==========================================================================
+Bagian A : ___ dari 4   selesai
+Grup 1   : ___ dari 10  selesai
+Grup 2   : ___ dari 10  selesai  (2 sudah diminta sebelumnya)
+Grup 3   : ___ dari 10  selesai
+Grup 4   : ___ dari 5   selesai  (2 sudah diminta sebelumnya)
+--------------------------------------------------------------------------
+TOTAL    : ___ dari 39 url
+
+CATATAN AKHIR:
+- Setelah minta pengindeksan, Google TIDAK langsung mengindeks. Biasanya
+  perlu beberapa hari sampai beberapa minggu.
+- Kalau status di Search Console sudah "Terindeks" (bukan lagi "Ditemukan -
+  belum diindeks"), tidak perlu minta ulang.
+- Kalau ada artikel baru, tambahkan url-nya di grup paling atas file ini.
+==========================================================================

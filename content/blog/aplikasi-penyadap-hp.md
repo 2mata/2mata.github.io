@@ -1,5 +1,5 @@
 ---
-title: "Jasa Penyadap iPhone: Cek Aplikasi WA, Instagram, Facebook"
+title: "Jasa Penyadap iPhone: Cek Aplikasi WA, Instagram, Facebook (mSpy)"
 date: 2024-12-17
 description: Download aplikasi penyadap iPad dan iPhone, Sadap WhatsApp, Telegram, Skype, Messenger, dan Instagram, rekam panggilan suara dan lacak lokasi.
 author: Muhammad Ikshan
