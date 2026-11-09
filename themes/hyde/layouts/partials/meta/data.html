@@ -21,6 +21,9 @@
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="theme-color" content="#ffffff">
 
+<!-- Verifikasi kepemilikan situs untuk Bing Webmaster Tools. -->
+<meta name="msvalidate.01" content="8EBA2F16E4079A3BF2525F4FAF8E7435">
+
 <!-- RSS etc -->
 {{ range .AlternativeOutputFormats -}}
   {{- printf `<link href="%s" rel="%s" type="%s" title="%s" />` .Permalink .Rel .MediaType.Type $.Site.Title | safeHTML -}}
